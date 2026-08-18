@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}arxiv reader — browse by subject{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1>Browse arXiv by subject</h1>
+  <p>
+    {{ category_count }} categories across {{ groups.len() }} subject groups.
+    Pick one to see the latest submissions
+    {% if ai_enabled %}with an AI summary of every abstract.{% else %}<span class="warn">(AI summaries are off — set <code>OPENAI_API_KEY</code> to enable them).</span>{% endif %}
+  </p>
+</section>
+
+{% for group in groups %}
+<section class="group">
+  <h2 class="group-name">{{ group.name }}</h2>
+  {% for archive in group.archives %}
+  <div class="archive">
+    {% if archive.name != group.name %}<h3 class="archive-name">{{ archive.name }} <code>{{ archive.id }}</code></h3>{% endif %}
+    <ul class="cats">
+      {% for category in archive.categories %}
+      <li>
+        <a href="/c/{{ category.id }}">
+          <code class="cat-id">{{ category.id }}</code>
+          <span class="cat-name">{{ category.name }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</section>
+{% endfor %}
+{% endblock %}

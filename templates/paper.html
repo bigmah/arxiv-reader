@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}{{ paper.title }}{% endblock %}
+
+{% block main_class %}paper-view{% endblock %}
+
+{% block crumbs %}
+<a href="/">All subjects</a>
+{% if let Some(category) = from_category %}
+<span class="sep">/</span>
+<a href="/c/{{ category }}?page={{ from_page }}">{{ category }}</a>
+{% endif %}
+<span class="sep">/</span>
+<span class="crumb-id">{{ paper.id }}</span>
+{% endblock %}
+
+{% block content %}
+<div class="paper-grid" data-paper-id="{{ paper.id }}">
+
+  <section class="pdf-pane">
+    <div class="pane-head">
+      <span>PDF</span>
+      <span class="pane-links">
+        <a href="/pdf/{{ paper.id }}" target="_blank" rel="noreferrer">new tab ↗</a>
+        <a href="{{ paper.pdf_url }}" target="_blank" rel="noreferrer">on arXiv ↗</a>
+      </span>
+    </div>
+    <iframe class="pdf-frame" src="/pdf/{{ paper.id }}#view=FitH" title="PDF of {{ paper.title }}"></iframe>
+  </section>
+
+  <section class="detail-pane">
+    <header class="paper-header">
+      <h1>{{ paper.title }}</h1>
+      <p class="paper-meta">{{ paper.author_line() }}</p>
+      <p class="paper-meta">
+        Submitted {{ paper.published }}{% if paper.updated != paper.published %}, revised {{ paper.updated }}{% endif %}
+        <span class="sep">·</span>
+        <a href="{{ paper.abs_url }}" rel="noreferrer">arXiv:{{ paper.id }} ↗</a>
+        {% if let Some(doi) = paper.doi %}
+        <span class="sep">·</span>
+        <a href="https://doi.org/{{ doi }}" rel="noreferrer">doi:{{ doi }} ↗</a>
+        {% endif %}
+      </p>
+      <div class="tags">
+        {% for tag in paper.categories %}<code{% if paper.is_primary(tag) %} class="primary" title="primary category"{% endif %}>{{ tag }}</code>{% endfor %}
+      </div>
+      {% if let Some(comment) = paper.comment %}<p class="paper-note">{{ comment }}</p>{% endif %}
+      {% if let Some(journal) = paper.journal_ref %}<p class="paper-note">Published as: {{ journal }}</p>{% endif %}
+    </header>
+
+    <details class="abstract-block">
+      <summary>Abstract</summary>
+      <p>{{ paper.summary }}</p>
+    </details>
+
+    <section class="summary-block">
+      <h2>Detailed summary</h2>
+      {% if ai_enabled %}
+      <div id="summary" class="markdown" data-state="loading">
+        <p class="loading">Reading the paper<span class="dots"></span></p>
+        <p class="loading-note">First view downloads the PDF and summarizes it; later views are cached.</p>
+      </div>
+      {% else %}
+      <p class="warn">Set <code>OPENAI_API_KEY</code> to generate a full summary of this paper.</p>
+      {% endif %}
+    </section>
+
+    <section class="chat-block">
+      <h2>Chat with this paper</h2>
+      {% if ai_enabled %}
+      <div id="chat-log" class="chat-log" aria-live="polite"></div>
+      <form id="chat-form" class="chat-form" autocomplete="off">
+        <textarea id="chat-input" rows="2" placeholder="Ask something about this paper — Enter to send, Shift+Enter for a new line" required></textarea>
+        <button type="submit">Ask</button>
+      </form>
+      <p class="chat-hint">Answers are grounded in the extracted PDF text and can still be wrong.</p>
+      {% else %}
+      <p class="warn">Set <code>OPENAI_API_KEY</code> to chat with this paper.</p>
+      {% endif %}
+    </section>
+  </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% if ai_enabled %}<script src="/static/app.js" defer></script>{% endif %}
+{% endblock %}

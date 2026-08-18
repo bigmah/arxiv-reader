@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/CmTxYxREm79M90xtsBea5xS3bRg</id>
+  <title>arXiv Query: search_query=cat:cs.LG&amp;id_list=&amp;start=0&amp;max_results=5</title>
+  <updated>2026-08-17T19:55:29Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.LG&amp;start=0&amp;max_results=5&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>5</opensearch:itemsPerPage>
+  <opensearch:totalResults>281434</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2608.14539v1</id>
+    <title>Decoding the Past: An Uncertainty-Aware Deep Learning Framework for Sex Attribution in Prehistoric Hand Stencils</title>
+    <updated>2026-08-14T17:51:30Z</updated>
+    <link href="https://arxiv.org/abs/2608.14539v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.14539v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Determining the biological sex of the individuals who created Upper Paleolithic hand stencils remains a challenging problem due to the absence of ground truth, population differences between contemporary and prehistoric groups, and the uncertainty introduced by image degradation. Traditional morphometric methods suffer from high structural overlap across sexes, poor cross-population generalizability, and subjective feature engineering. This study presents an uncertainty-aware deep learning framework for sex attribution in prehistoric hand stencils that explicitly models, propagates, and aggregates uncertainty throughout the analytical pipeline. The methodology combines dual image processing, dual contour extraction, structured silhouette augmentation, model architectural diversity, and ensemble-based decision aggregation. The pipeline generates twelve plausible silhouette realizations per stencil to capture boundary uncertainties, which are processed by two ensembles of ten deep neural networks each (EfficientNet-B3 and MobileViT-S) trained on 14,036 contemporary hand samples. Furthermore, a triangulated validation scheme integrates ensemble predictions with unsupervised 2D latent-space manifold mapping (UMAP + k-NN) and explainable AI spatial attributions (LayerCAM) to ensure anatomical consistency. On contemporary data, ensemble models achieve strong classification performance, with accuracies exceeding 88% in older age groups. When applied to prehistoric stencils, the framework produces both sex predictions and confidence measures of internal agreement, enabling the distinction between morphologically stable and ambiguous cases. Convergence across ensemble predictions, latent-space structure, and interpretability analyses shows that uncertainty can become a measurable component of archaeological inference, enabling robust and reproducible decoding of ancient rock art.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-14T17:51:30Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Karel Becerra</name>
+    </author>
+    <author>
+      <name>Boris Mederos</name>
+    </author>
+    <author>
+      <name>Dean Snow</name>
+    </author>
+    <author>
+      <name>Ramón A. Mollineda</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.14509v1</id>
+    <title>Split the Labor: Separating Evidence Interpretation from Decision Aggregation</title>
+    <updated>2026-08-14T17:24:55Z</updated>
+    <link href="https://arxiv.org/abs/2608.14509v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.14509v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Systems that ask a language model to reach a conclusion from many sources usually concatenate them into one prompt. This conflates two operations with different requirements. Interpreting a source rewards capacity and context. Combining interpretations rewards fixed arithmetic, comparability across instances, and the option to return nothing. Once separated, the design problem becomes the interface between them. We propose a four-field evidence tuple (hypothesis, reliability bucket, rationale, provenance) and show that fixing it determines both halves. The separation also reveals a failure mode in how such systems combine, which we call count-scale drift. Thresholding a sum of unnormalized weights is exactly posterior thresholding, but at an operating point that slides with the number of sources consulted. The slide grows with reader reliability. When source reliabilities differ, the vote rule and the posterior order instances differently, and no threshold reconciles them. Pooling calibrated log-likelihood ratios addresses both problems. The fix is arithmetic rather than architectural, and applies to a class of rules beyond language models: score-summing triage engines, diagnostic panels scored by counting positives, and additive multi-signal detectors. We then instantiate the principle twice on one longitudinal corpus, once after outcomes resolve and once before. The same partition helps in both, at different granularities: over reading in the first, over learning capacity in the second. There, a small sequence encoder on an easy auxiliary objective plus a tree ensemble carrying the censored survival loss reaches 0.921 AUPRC against 0.805 for a hand-crafted baseline. We separate what transfers from what must be re-estimated per domain, and state five predictions that would falsify the framework, three negative results, and which comparisons remain confounded.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-14T17:24:55Z</published>
+    <arxiv:comment>Atlassian. 22 pages, 2 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Zhelun Wu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.14505v1</id>
+    <title>RecipeNet: A Hierarchical Transformer for Recipe Data</title>
+    <updated>2026-08-14T17:18:36Z</updated>
+    <link href="https://arxiv.org/abs/2608.14505v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.14505v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Recipe data arises in domains such as materials synthesis, pharmaceutical formulation, and industrial manufacturing, where procedures are represented as ordered sequences of steps containing heterogeneous structured fields. Existing tabular learning methods typically flatten this structure into fixed-schema representations, limiting their ability to capture hierarchical field interactions and procedural dependencies. We propose RecipeNet, a hierarchical Transformer architecture that encodes field-level interactions within each step and sequential dependencies across steps through stacked Transformer encoders. Experiments on multiple recipe datasets and tasks demonstrate that RecipeNet consistently outperforms existing tabular models, highlighting the value of hierarchical and sequential modeling for recipe representation learning.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-14T17:18:36Z</published>
+    <arxiv:comment>Accepted at CIKM 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Pin-Yen Huang</name>
+    </author>
+    <author>
+      <name>Sachin Chhabra</name>
+    </author>
+    <author>
+      <name>Prasanth Sai Gouripeddi</name>
+    </author>
+    <author>
+      <name>Abhinav Kumar</name>
+    </author>
+    <author>
+      <name>Baoxin Li</name>
+    </author>
+    <arxiv:doi>10.1145/3799682.3839874</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3799682.3839874" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.14502v1</id>
+    <title>Universal Thermodynamic Interatomic Potentials for Crystalline Materials</title>
+    <updated>2026-08-14T17:16:27Z</updated>
+    <link href="https://arxiv.org/abs/2608.14502v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.14502v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Free energies govern solid-state phase stability, yet computational materials discovery still relies largely on ground-state energies because free energy calculations require ensemble averages. We introduce the thermodynamic interatomic potential (TIP), which extends an interatomic potential from its static energy to a thermodynamically consistent Gibbs free energy model, with thermodynamic responses following from temperature and pressure by automatic differentiation. We implement TIP[UMA] using the universal potential UMA, train it on free energies from quasi-harmonic to molecular dynamics fidelity, and calibrate it to higher-resolution calculations or experiment. From a single evaluation, it returns the equation of state of a crystal and locates phase transitions among competing branches, including dynamically stabilized phases. Fine-tuning extends the model to alloy solubility limits and miscibility gaps. TIP makes the free energy as accessible as the potential energy, opening finite-temperature phase stability to high-throughput discovery.</summary>
+    <category term="cond-mat.mtrl-sci" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cond-mat.stat-mech" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="physics.chem-ph" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-14T17:16:27Z</published>
+    <arxiv:primary_category term="cond-mat.mtrl-sci"/>
+    <author>
+      <name>Juno Nam</name>
+    </author>
+    <author>
+      <name>Bowen Deng</name>
+    </author>
+    <author>
+      <name>Xiaochen Du</name>
+    </author>
+    <author>
+      <name>Luis Barroso-Luque</name>
+    </author>
+    <author>
+      <name>Benjamin Kurt Miller</name>
+    </author>
+    <author>
+      <name>Rafael Gómez-Bombarelli</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.14498v1</id>
+    <title>Rollplex: Cross-Phase GPU Spatial Sharing for Vision Language Model Post-Training</title>
+    <updated>2026-08-14T17:13:34Z</updated>
+    <link href="https://arxiv.org/abs/2608.14498v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.14498v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-language models (VLMs) enable embodied agents to reason and act from visual observations and language instructions. Reinforcement learning (RL) post-training enhances these capabilities using task feedback, but current on-policy RL runtimes execute rollout, reference scoring, and actor training in strict serial phases. While effective for text-only RL, this phase-granular execution is wasteful for VLMs, where processing dense video inputs and prompt prefixes occupies a large fraction of each phase. Because prefix processing is independent of the generated response, it can be run alongside rollout decoding, which leaves GPU compute capacity underutilized, without breaking synchronous on-policy semantics.
+  We present Rollplex, a runtime that decomposes the reference and training phase and moves the prefix computation into the rollout decode window. Realizing this schedule requires more than concurrent kernel launches: naive colocation of Qwen2.5-VL-32\,B requires roughly 165\,GiB per GPU, while rollout and training prefer different tensor-parallel (TP) degrees and weight layouts. Rollplex addresses these constraints with two mechanisms. Phase-aware memory management controls HBM residency according to producer--consumer lifetimes. Parallelism-aware weight sharing uses the same physical storage for layout-compatible tensors across distinct TP degrees and reconstructs only incompatible tensors, avoiding a complete second actor copy. On 32 H800 GPUs, Rollplex achieves $1.23\times$--$1.30\times$ speedup over serial colocation and $1.57\times$--$2.24\times$ over disaggregation under the same GPU budget, while preserving the synchronous RL update.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.DC" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-14T17:13:34Z</published>
+    <arxiv:comment>16 pages, 10 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Hanfeng Lu</name>
+    </author>
+    <author>
+      <name>Tianyu Feng</name>
+    </author>
+    <author>
+      <name>Suyi Li</name>
+    </author>
+    <author>
+      <name>Yuheng Zhao</name>
+    </author>
+    <author>
+      <name>Wei Gao</name>
+    </author>
+    <author>
+      <name>Shaopan Xiong</name>
+    </author>
+    <author>
+      <name>Ju Huang</name>
+    </author>
+    <author>
+      <name>Siran Yang</name>
+    </author>
+    <author>
+      <name>Jiamang Wang</name>
+    </author>
+    <author>
+      <name>Lin Qu</name>
+    </author>
+    <author>
+      <name>Wei Wang</name>
+    </author>
+  </entry>
+</feed>

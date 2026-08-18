@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}arxiv reader{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#128220;</text></svg>">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">arxiv<span class="brand-accent">·reader</span></a>
+    <nav class="crumbs">{% block crumbs %}{% endblock %}</nav>
+  </header>
+
+  <main class="{% block main_class %}wrap{% endblock %}">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    Papers and metadata from <a href="https://arxiv.org">arXiv.org</a>, used under their
+    <a href="https://info.arxiv.org/help/api/tou.html">API terms of use</a>.
+    Summaries are machine-generated and may be wrong — read the paper.
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

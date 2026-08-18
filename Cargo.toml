@@ -1,0 +1,27 @@
+[package]
+name = "arxiv-reader"
+version = "0.1.0"
+edition = "2024"
+description = "Browse arXiv by subject with AI summaries and chat-with-the-paper"
+
+[dependencies]
+anyhow = "1.0.104"
+askama = { version = "0.16.0", features = ["serde_json"] }
+axum = "0.8.9"
+dotenvy = "0.15.7"
+futures = "0.3.34"
+html-escape = "0.2.15"
+pdf-extract = "0.12.0"
+pulldown-cmark = { version = "0.13.4", default-features = false, features = ["html"] }
+pulldown-latex = "0.8.0"
+quick-xml = { version = "0.41.0", features = ["serialize"] }
+reqwest = { version = "0.13.4", features = ["json", "stream"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+tokio = { version = "1.53.1", features = ["full"] }
+tower-http = { version = "0.7.0", features = ["fs", "trace", "compression-gzip"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
+
+[dev-dependencies]
+http = "1.5.0"

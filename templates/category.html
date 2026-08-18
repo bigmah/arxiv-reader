@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category_id }} — {{ category_name }}{% endblock %}
+
+{% block crumbs %}
+<a href="/">All subjects</a>
+<span class="sep">/</span>
+<span>{{ group_name }}</span>
+{% endblock %}
+
+{% block content %}
+<section class="listing-head">
+  <h1>{{ category_name }} <code class="cat-id big">{{ category_id }}</code></h1>
+  {% if pagination.total > 0 %}
+  <p class="counts">
+    Showing {{ pagination.first_result }}–{{ pagination.last_result }} of
+    {{ pagination.total }} papers, newest first.
+  </p>
+  {% endif %}
+  {% if !ai_enabled %}
+  <p class="warn">AI summaries are off — set <code>OPENAI_API_KEY</code> to turn them on. Showing abstracts instead.</p>
+  {% endif %}
+</section>
+
+{% if papers.is_empty() %}
+<p class="empty">No papers on this page. {% if pagination.page > 1 %}<a href="/c/{{ category_id }}">Back to the first page</a>.{% endif %}</p>
+{% endif %}
+
+<ol class="papers">
+{% for item in papers %}
+  <li class="paper">
+    <h2 class="paper-title">
+      <a href="/p/{{ item.paper.id }}?from={{ category_id }}&amp;page={{ pagination.page }}">{{ item.paper.title }}</a>
+    </h2>
+    <p class="paper-meta">{{ item.paper.author_line() }} <span class="sep">·</span> {{ item.paper.published }}</p>
+
+    <div class="blurb">
+      <span class="badge {% if item.ai_generated %}badge-ai{% endif %}">
+        {% if item.ai_generated %}summary{% else %}abstract{% endif %}
+      </span>
+      <p>{{ item.blurb }}</p>
+    </div>
+
+    <div class="paper-foot">
+      <div class="tags">
+        {% for tag in item.paper.categories %}<code{% if item.paper.is_primary(tag) %} class="primary" title="primary category"{% endif %}>{{ tag }}</code>{% endfor %}
+      </div>
+      <div class="paper-links">
+        {% if item.ai_generated %}<details class="raw-abstract"><summary>abstract</summary><p>{{ item.paper.summary }}</p></details>{% endif %}
+        <a href="{{ item.paper.abs_url }}" rel="noreferrer">arXiv&nbsp;↗</a>
+      </div>
+    </div>
+  </li>
+{% endfor %}
+</ol>
+
+{% if !papers.is_empty() %}
+<nav class="pager">
+  {% if let Some(prev) = pagination.prev_page %}
+  <a class="pager-btn" href="/c/{{ category_id }}?page={{ prev }}">← Newer</a>
+  {% else %}
+  <span class="pager-btn disabled">← Newer</span>
+  {% endif %}
+
+  <span class="pager-pos">Page {{ pagination.page }} of {{ pagination.total_pages }}</span>
+
+  {% if let Some(next) = pagination.next_page %}
+  <a class="pager-btn" href="/c/{{ category_id }}?page={{ next }}">Older →</a>
+  {% else %}
+  <span class="pager-btn disabled">Older →</span>
+  {% endif %}
+</nav>
+{% endif %}
+{% endblock %}

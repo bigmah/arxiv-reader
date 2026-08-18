@@ -1,0 +1,10 @@
+/target
+
+# Secrets
+.env
+
+# Downloaded PDFs, extracted text, and generated summaries
+.cache/
+.cache-*/
+
+.DS_Store

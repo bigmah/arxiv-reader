@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{ code }} {{ reason }}{% endblock %}
+
+{% block content %}
+<section class="error-page">
+  <h1>{{ code }} <span class="reason">{{ reason }}</span></h1>
+  <p class="error-message">{{ message }}</p>
+  <p><a class="pager-btn" href="/">← Back to all subjects</a></p>
+</section>
+{% endblock %}
